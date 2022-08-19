@@ -26,6 +26,7 @@ sudo chown "$(id -u):$(id -g)" ~/.trackwarrior-docker/.task/pending.data
 ```toml
 [custom.current_task]
 command = """TASKRC=~/.trackwarrior-docker/.taskrc TASKDATA=~/.trackwarrior-docker/.task unbuffer task starship-project | head -5 | tail -1 | sed "s/No matches./[No active task]/" | xargs"""
+when = true
 shell = "bash"
 ```
 
