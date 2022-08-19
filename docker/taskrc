@@ -66,3 +66,8 @@ urgency.user.tag.problem.coefficient=4.5
 urgency.user.tag.later.coefficient=-6.0
 
 create_time_when_add_task = true
+
+report.starship-project.description=Shows current task for use in starship
+report.starship-project.columns=id,project
+report.starship-project.filter=status:pending and +ACTIVE
+report.starship-project.sort=project+,start+
