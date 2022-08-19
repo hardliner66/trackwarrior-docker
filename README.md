@@ -15,13 +15,14 @@ Just run `trackwarrior` to open an interactive `tasksh` instance.
 
 ## Integrate with starship
 1) Locally install taskwarrior
-2) Set the correct rights for your local taskwarrior to read the data from the container
+2) Install [starship](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+3) Set the correct rights for your local taskwarrior to read the data from the container
 ```sh
 # trackwarrior needs to be used at least once
 sudo chown "$(id -u):$(id -g)" ~/.trackwarrior-docker/.task/pending.data
 ```
 
-3) Add the following to your starship.toml
+4) Add the following to your starship.toml
 
 ```toml
 [custom.current_task]
