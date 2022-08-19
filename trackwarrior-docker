@@ -4,5 +4,7 @@ set -euo pipefail
 
 docker run --rm \
   -it \
+  -v "/etc/timezone:/etc/timezone:ro" \
+  -v "/etc/localtime:/etc/localtime:ro" \
   -v "$HOME/.trackwarrior-docker:/root" \
   hardliner66/trackwarrior:latest
