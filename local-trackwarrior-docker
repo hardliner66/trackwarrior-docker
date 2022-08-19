@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cd $(dirname $BASH_SOURCE)
+
+docker build -t trackwarrior .
+
+docker run --rm \
+  -it \
+  -v "$HOME/.trackwarrior-docker:/root" \
+  trackwarrior:latest

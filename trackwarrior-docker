@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -euo pipefail
+
+docker run --rm \
+  -it \
+  -v "$HOME/.trackwarrior-docker:/root" \
+  hardliner66/trackwarrior:latest
