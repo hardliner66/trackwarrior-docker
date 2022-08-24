@@ -17,6 +17,7 @@ RUN chmod +x /usr/bin/unbuffer
 
 RUN pacman -Syu --noconfirm task timew nodejs fish neovim
 
+COPY ./docker/sysinit.vim /etc/xdg/nvim/sysinit.vim
 RUN ln -s /usr/bin/nvim /usr/bin/vi
 
 ENTRYPOINT [ "/trackwarrior-docker/trackwarrior.sh" ]
