@@ -2,7 +2,20 @@
 
 set -euo pipefail
 
-source_dir=$(dirname "$BASH_SOURCE")
+PRG="$BASH_SOURCE"
+progname=`basename "$BASH_SOURCE"`
+
+while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=`dirname "$PRG"`"/$link"
+    fi
+done
+
+source_dir=$(dirname "$PRG")
 
 docker build -t hardliner66/trackwarrior:latest "$source_dir"
 
