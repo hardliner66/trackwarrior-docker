@@ -1,5 +1,7 @@
 #!/bin/bash
 
+start_command=${1:-fish}
+
 yes | timew &> /dev/null
 yes | task &> /dev/null
 
@@ -21,4 +23,4 @@ cd /root/.timewarrior/extensions && chmod +x trackwarrior-duration.js trackwarri
 # change directory to home
 cd
 
-tasksh
+$start_command

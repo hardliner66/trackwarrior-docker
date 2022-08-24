@@ -2,13 +2,8 @@
 
 set -euo pipefail
 
-cd $(dirname $BASH_SOURCE)
+source_dir=$(dirname "$BASH_SOURCE")
 
-docker build -t trackwarrior .
+docker build -t hardliner66/trackwarrior:latest "$source_dir"
 
-docker run --rm \
-  -it \
-  -v "/etc/timezone:/etc/timezone:ro" \
-  -v "/etc/localtime:/etc/localtime:ro" \
-  -v "$HOME/.trackwarrior-docker:/root" \
-  trackwarrior:latest
+"$source_dir"/trackwarror-docker "$@"

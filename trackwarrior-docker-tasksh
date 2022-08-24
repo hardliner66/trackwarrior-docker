@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+
+source_dir=$(dirname "$BASH_SOURCE")
+"$source_dir"/trackwarrior-docker tasksh

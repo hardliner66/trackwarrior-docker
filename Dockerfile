@@ -15,7 +15,7 @@ COPY ./docker/unbuffer /usr/bin/unbuffer
 RUN chmod +x /trackwarrior-docker/trackwarrior.sh
 RUN chmod +x /usr/bin/unbuffer
 
-RUN pacman -Syu --noconfirm task timew nodejs fish neovim
+RUN pacman -Syu --noconfirm task timew nodejs fish neovim taskwarrior-tui
 
 COPY ./docker/sysinit.vim /etc/xdg/nvim/sysinit.vim
 RUN ln -s /usr/bin/nvim /usr/bin/vi

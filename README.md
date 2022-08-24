@@ -1,7 +1,7 @@
 # trackwarrior-docker
 
 ## Description
-Run a configured version of trackwarrior through docker and tasksh.
+Run a configured version of trackwarrior through docker
 
 ## Install
 ```sh
@@ -10,8 +10,20 @@ cd trackwarrior
 sudo ln -s "$PWD/trackwarrior-docker" /usr/local/bin/trackwarrior
 ```
 
+### Use tasksh as main frontend
+```sh
+sudo rm /usr/local/bin/trackwarrior
+sudo ln -s "$PWD/trackwarrior-docker-tasksh" /usr/local/bin/trackwarrior
+```
+
+### Use taskwarrior-tui as main frontend
+```sh
+sudo rm /usr/local/bin/trackwarrior
+sudo ln -s "$PWD/trackwarrior-docker-tui" /usr/local/bin/trackwarrior
+```
+
 ## Usage
-Just run `trackwarrior` to open an interactive `tasksh` instance.
+Just run `trackwarrior` to open the configured fronted (default: fish shell)
 
 ## Integrate with starship
 1) Locally install taskwarrior
@@ -34,12 +46,15 @@ shell = "bash"
 ## Run with docker
 Use the script `trackwarrior-docker` or run docker manually:
 ```sh
-docker run -it -v "$HOME/.trackwarrior-docker:/root" hardliner66/trackwarrior:latest
+docker run --rm -it \
+  -v "/etc/timezone:/etc/timezone:ro" \
+  -v "/etc/localtime:/etc/localtime:ro" \
+  -v "$HOME/.trackwarrior-docker:/root" hardliner66/trackwarrior:latest
 ```
 
 ## Locally build and run docker
 Use the script `local-trackwarrior-docker` or run docker manually:
 ```sh
-docker build -t trackwarrior .
-docker run -it -v "$HOME/.trackwarrior-docker:/root" trackwarrior:latest
+docker build -t hardliner66/trackwarrior:latest .
+  -v "$HOME/.trackwarrior-docker:/root" hardliner66/trackwarrior:latest
 ```
