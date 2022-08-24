@@ -15,6 +15,8 @@ COPY ./docker/unbuffer /usr/bin/unbuffer
 RUN chmod +x /trackwarrior-docker/trackwarrior.sh
 RUN chmod +x /usr/bin/unbuffer
 
-RUN pacman -Syu --noconfirm task timew nodejs fish
+RUN pacman -Syu --noconfirm task timew nodejs fish neovim
+
+RUN ln -s /usr/bin/nvim /usr/bin/vi
 
 ENTRYPOINT [ "/trackwarrior-docker/trackwarrior.sh" ]
