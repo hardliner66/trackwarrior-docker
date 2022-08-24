@@ -2,19 +2,7 @@
 
 set -euo pipefail
 
-PRG="$BASH_SOURCE"
-progname=`basename "$BASH_SOURCE"`
-
-while [ -h "$PRG" ] ; do
-    ls=`ls -ld "$PRG"`
-    link=`expr "$ls" : '.*-> \(.*\)$'`
-    if expr "$link" : '/.*' > /dev/null; then
-        PRG="$link"
-    else
-        PRG=`dirname "$PRG"`"/$link"
-    fi
-done
-
-source_dir=$(dirname "$PRG")
+source_path="$(readlink -f "$(readlink "${BASH_SOURCE[0]}")")"
+source_dir="$(dirname "${source_path}")"
 
 "$source_dir"/trackwarrior-docker taskwarrior-tui
