@@ -18,6 +18,8 @@ RUN chmod +x /usr/bin/unbuffer
 RUN pacman -Syu --noconfirm task timew nodejs fish neovim taskwarrior-tui
 
 COPY ./docker/sysinit.vim /etc/xdg/nvim/sysinit.vim
+COPY ./docker/base.fish /etc/fish/conf.d/base.fish
+
 RUN ln -s /usr/bin/nvim /usr/bin/vi
 
 ENTRYPOINT [ "/trackwarrior-docker/trackwarrior.sh" ]
